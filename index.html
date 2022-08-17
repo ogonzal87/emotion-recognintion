@@ -1,32 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Face Recognition</title>
     <script defer src="./face-api.min.js"></script>
     <script defer src="./script.js"></script>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #5f5f5f;
+      }
 
-        canvas {
-            position: absolute;
+      .container {
+        filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.4));
+      }
+
+      .dot {
+        background-color: #e52e2e;
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+        animation: fadein 3s ease-in-out infinite;
+        position: absolute;
+        top: 108px;
+        left: 195px;
+        z-index: 999;
+      }
+
+      img {
+        position: absolute;
+        z-index: 9;
+        filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.4));
+      }
+
+      .scrim {
+        filter: grayscale(1);
+      }
+
+      canvas {
+        position: absolute;
+        filter: grayscale(1);
+      }
+
+      @keyframes fadein {
+        0% {
+          opacity: 0.16;
         }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.16;
+        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <video id="video" width="720" height="560" autoplay muted></video>
-
-</body>
-
+  <body>
+    <div class="container">
+      <div class="dot"></div>
+      <img src="img.png" alt="overlay" width="1200" height="825" />
+      <div class="scrim">
+        <video id="video" width="1200" height="825" autoplay muted></video>
+      </div>
+    </div>
+  </body>
 </html>
